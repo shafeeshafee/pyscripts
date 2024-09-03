@@ -1,20 +1,18 @@
-# import the os module
-
-# get input for directory to look in
-# create a counter set it at 0
-# for item inside the directory
-# when a directory or file is found, add to counter
-# in the end display "There are x many items in this folder"
-
-# TODO: count occurences separately for files and dir alike 
-
 import os
 
 path_to_traverse = input("Enter the folder you want to check: ")
 
-item_count = 0
+# create count checks for dir_count and file_count
+dir_count = 0
+file_count = 0
 
 for item in os.listdir(path_to_traverse):
-    item_count += 1
+    # get full path of each item
+        # /home/john/file.txt instead of just file.txt
+    item_path = os.path.join(path_to_traverse, item)
+    if os.path.isdir(item_path):
+        dir_count += 1
+    elif os.path.isfile(item_path):
+        file_count += 1
 
-print(f"There are {item_count} items in {path_to_traverse}")
+print(f"There are {dir_count} directories and {file_count} files in {path_to_traverse}")
