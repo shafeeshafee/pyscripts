@@ -6,6 +6,7 @@
 # when a directory or file is found, add to counter
 # in the end display "There are x many items in this folder"
 
+# TODO: count occurences separately for files and dir alike 
 
 import os
 
