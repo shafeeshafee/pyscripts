@@ -1,0 +1,7 @@
+# venv stuff
+api_test/venv/
+venv
+*venv*
+
+# env keys
+api_test/.env
