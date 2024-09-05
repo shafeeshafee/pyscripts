@@ -25,6 +25,7 @@ response = requests.get(url, headers=headers, params=query_string)
 if response.status_code == 200:
     animals_data = response.json()
     # displays information about an animal, whether one or many, found in data
+    # if it doesn't have a specific field, show "unknown"
     def display_animal_info(animal):
         name = animal.get('name', 'Unknown animal')
         lifestyle = animal.get('characteristics', {}).get('lifestyle', 'unknown lifestyle').lower()
