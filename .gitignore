@@ -5,3 +5,6 @@ venv
 
 # env keys
 api_test/.env
+
+**__pycache__**
+**.pytest_cache**
