@@ -1,4 +1,5 @@
 import os
+import time
 
 def get_dir_size(dir):
     # check if dir exists and is actually a dir
@@ -22,8 +23,20 @@ def get_dir_size(dir):
     size_in_mb = total_size / (1024 * 1024)
     return size_in_mb 
 
-try:
-    dir_size = get_dir_size('./test_dir')
-    print(f"Directory size: {dir_size: .2f} MB")
-except (FileNotFoundError, NotADirectoryError) as e:
-    print(f"Error: {e}")
+def monitor_dir_size(dir, size_limit_mb, check_interval=5):
+    # runs in an infinite loop, continuously monitoring the directory size
+    while True:
+        try:
+            dir_size = get_dir_size(dir):
+            print(f"Monitoring dir size... Directory size is: {dir_size: .2f} MB")
+
+            if dir_size > size_limit_mb:
+                # prints the current directory size in each iteration
+                print(f"Alert: Directory size exceeded the limit of {size_limit_mb} MB!")
+            
+            # uses time.sleep() to pause between checks, avoiding excessive resource usage 
+            time.sleep(check_interval)
+        except (FileNotFoundError, NotADirectoryError) as e:
+            print(f"There was an unexpected error: {e}")
+            break
+
